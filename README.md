@@ -1,5 +1,9 @@
 # Parcel Pets
+The postal chaps need to match up their friends in rows/columns of 3, 4 or 5!
 
+They need to be quick though, and matching Fig or Marm will give you some extra time!
+
+Score big and see what Fig and Marm deserve as a treat
 
 # Game information
 - Works on non-mobile browsers only using a mouse!

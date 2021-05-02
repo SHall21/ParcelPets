@@ -2,25 +2,42 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Marm Mash</title>
+    <title>Matching Marms - Start</title>
     <link rel="stylesheet" href="style.css">
-    <script src="app.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <script>
+        async function startGame() {
+            PlayAudioFile('sounds/zapsplat_multimedia_game_sound_retro_basic_synth_buzz_positive_musical_007_64984.mp3');
+            document.getElementById('buttonStart').id = 'buttonStarting';
+            document.body.style = 'pointer-events: none'
+            await sleep(1500);
+            window.location.replace("main.html");
+        }
+        function PlayAudioFile(src) {
+            var sound = document.createElement('audio');
+            sound.src = src;
+            sound.type = 'audio/mpeg';
+            document.body.appendChild(sound);
+            sound.load();
+            sound.play().catch(() => void 0);
+        }
+        function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
 </head>
 <body>
-    <div class="grid-container">
-        <div class="grid"></div>
-    </div>
-    <div class="boards-container">
-        <div class="boards">
-            <div class="score-board">
-                <h3>Score</h3>
-                <h1 id=score></h1>
-            </div>
-            <div class="timer-clock">
-                <h3>Timer</h3>
-                <h1 id=timer></h1>
-            </div>
+    <div class="title-container">
+        <div class="title-board">
+            <h1 id="title">PARCEL PETS</h3>
+            <h2 id="title-text">The postal chaps need to match up their friends in rows/columns of 3, 4 or 5!</h1>
+            <h2 id="title-text">They need to be quick though, and matching Fig or Marm will give you some extra time!</h1>
+            <h2 id="title-text">Score big and see what Fig and Marm deserve as a treat</h1>
+        </div>
+        <div class="button-container">
+            <img style="padding-right: 10px;" src="images/fig.png" alt="Picture of figgy pudding">
+            <a id="buttonStart" onclick="startGame()">Start!</a>
+            <img style="padding-left: 10px;" src="images/marm.png" alt="Picture of marmalade">
         </div>
     </div>
 </body>
