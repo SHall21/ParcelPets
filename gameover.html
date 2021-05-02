@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Matching Marms - Gameover</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <script>
+        async function startGame() {
+            PlayAudioFile('sounds/zapsplat_multimedia_game_sound_retro_basic_synth_buzz_positive_musical_007_64984.mp3');
+            document.getElementById('buttonStart').id = 'buttonStarting';
+            document.body.style = 'pointer-events: none'
+            await sleep(1500);
+            window.location.replace("index.html");
+        }
+        function PlayAudioFile(src) {
+            var sound = document.createElement('audio');
+            sound.src = src;
+            sound.type = 'audio/mpeg';
+            document.body.appendChild(sound);
+            sound.load();
+            sound.play().catch(() => void 0);
+        }
+        function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function getScore() {
+            let finalScore = localStorage.getItem("FinalScore");
+            let finalScoreDiv = document.getElementById("final-score");
+            let treat = document.getElementById("treat");
+            if (finalScore < 25) {
+                treat.style.backgroundImage = 'url("images/pants.png")';
+                finalScoreDiv.innerHTML = 'You tried your best... ' + finalScore + ' points';
+            }
+            if (finalScore >= 25 && finalScore < 50) {
+                treat.style.backgroundImage = 'url("images/binbagsandcrispanddry.png")';
+                finalScoreDiv.innerHTML = 'Oooo, bin plastic and oil for you. ' + finalScore + ' points';
+            }
+            if (finalScore >= 50 && finalScore < 100) {
+                treat.style.backgroundImage = 'url("images/billybear.png")';
+                finalScoreDiv.innerHTML = 'Meat shaped as a face. Enjoy. ' + finalScore + ' points';
+            }
+            if (finalScore >= 100 && finalScore < 150) {
+                treat.style.backgroundImage = 'url("images/icecream.png")';
+                finalScoreDiv.innerHTML = 'The finest ice cream, thank you. ' + finalScore + ' points';
+            }
+            if (finalScore >= 150 && finalScore < 200) {
+                treat.style.backgroundImage = 'url("images/tuna.png")';
+                finalScoreDiv.innerHTML = 'Posh grub for hardworkers. Nice! ' + finalScore + ' points';
+            }
+            if (finalScore >= 200) {
+                treat.style.backgroundImage = 'url("images/best.png")';
+                finalScoreDiv.innerHTML = 'Best post peeps ever. Have it all!! ' + finalScore + ' points';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="title-container">
+        <div class="title-board">
+            <h1 id="title">TIME'S UP!</h3>
+            <h3 id="final-score"></h3>
+            <div id=treat><script>getScore();</script></div>
+        </div>
+        <div class="button-container">
+            <img style="padding-right: 10px;" src="images/fig.png" alt="Picture of figgy pudding">
+            <a id="buttonStart" onclick="startGame()">Play Again!</a>
+            <img style="padding-left: 10px;" src="images/marm.png" alt="Picture of marmalade">
+        </div>
+    </div>
+</body>
+</html>
